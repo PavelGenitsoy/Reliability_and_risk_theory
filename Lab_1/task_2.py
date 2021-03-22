@@ -3,18 +3,14 @@ import numpy as np
 
 
 def create_ksi(alpha, size):
-    # uniform_list = np.random.uniform(size=size)
     return (1 / alpha) * np.power(-np.log(np.random.uniform(size=size)), 0.25)
 
 
 def create_etha(size):
-    # uniform_list = np.random.uniform(size=size)
     return np.power(-np.log(np.random.uniform(size=size)), 0.5)
 
 
 def quantity_of_steps(arr_qu):
-    # qu_mean = np.mean(arr_qu)
-    # sigma = np.std(arr_qu, ddof=1)
     return np.power((2.575 * np.std(arr_qu, ddof=1)) / (0.01 * np.mean(arr_qu)), 2)
 
 
