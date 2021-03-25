@@ -1,5 +1,6 @@
 from scipy import stats
 import numpy as np
+import os
 
 
 def first_A_task(arr, length):
@@ -49,9 +50,14 @@ if __name__ == '__main__':
     alpha = 1 - gamma   # 0.01
     number = [pow(10, 2), pow(10, 4), pow(10, 6)]
 
+    if os.path.exists("Results\\task_1_result.txt"):
+        os.remove("Results\\task_1_result.txt")
     for size in number:
         arr = np.random.normal(size=size)
-        print(f"N = {size},\tmean = {np.mean(arr)},\tdispersion = {np.std(arr, ddof=1)}\n",
-              f"first_A_task:  {first_A_task(arr, size)}\n",
-              f"second_B_task: {second_B_task(arr, size)}\n",
-              f"third_C_task:  {third_C_task(arr, size)}\n")
+        with open("Results\\task_1_result.txt", "a") as f:
+            print(f"N = {size},\tmean = {np.mean(arr)},\tdispersion = {np.std(arr, ddof=1)}\n",
+                  f"first_A_task:  {first_A_task(arr, size)}\n",
+                  f"second_B_task: {second_B_task(arr, size)}\n",
+                  f"third_C_task:  {third_C_task(arr, size)}\n", file=f)
+
+    print("ALL DONE!")
