@@ -55,7 +55,9 @@ if __name__ == '__main__':
     for size in number:
         arr = np.random.normal(size=size)
         with open("Results\\task_1_result.txt", "a") as f:
-            print(f"N = {size},\tmean = {np.mean(arr)},\tdispersion = {np.std(arr, ddof=1)}\n",
+            print(f"N = {size}\n",
+                  f"mean = {np.mean(arr)}\n",
+                  f"dispersion = {np.std(arr, ddof=1)}\n",
                   f"first_A_task:  {first_A_task(arr, size)}\n",
                   f"second_B_task: {second_B_task(arr, size)}\n",
                   f"third_C_task:  {third_C_task(arr, size)}\n", file=f)

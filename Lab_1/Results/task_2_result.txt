@@ -1,0 +1,30 @@
+alpha: 1
+	method_1(Monte-Carlo):
+		Q: 0.46111160948853663 || num_of_steps(length)=78031
+	method_2:
+		Q: 0.4538240975269138 || num_of_steps(length)=11194
+	method_3:
+		Q: 0.4585074885913216 || num_of_steps(length)=44363
+	method_4:
+		Q: 0.4541008476085816 || num_of_steps(length)=62224
+
+alpha: 0.3
+	method_1(Monte-Carlo):
+		Q: 0.015597829692845308 || num_of_steps(length)=4190006
+	method_2:
+		Q: 0.015548700960691038 || num_of_steps(length)=1035026
+	method_3:
+		Q: 0.0154117656077032 || num_of_steps(length)=281609
+	method_4:
+		Q: 0.015694143174624108 || num_of_steps(length)=100
+
+alpha: 0.1
+	method_1(Monte-Carlo):
+		lack of resources due to sample length!!
+	method_2:
+		Q: 0.00020069627321174253 || num_of_steps(length)=82550005
+	method_3:
+		Q: 0.00019968694808032418 || num_of_steps(length)=325004
+	method_4:
+		Q: 0.0001999189371061149 || num_of_steps(length)=5
+
