@@ -1,18 +1,18 @@
 H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1)
 	N = 1000
-		delta = 19.840000000000146; z = 30.14352720564616 || Statistics do not contradict the hypothesis H_0
+		delta = 8.239999999999895; z = 30.14352720564616 || Statistics do not contradict the hypothesis H_0
 	N = 10000
-		delta = 221.08000000000175; z = 232.91182176847582 || Statistics do not contradict the hypothesis H_0
+		delta = 197.3199999999997; z = 232.91182176847582 || Statistics do not contradict the hypothesis H_0
 	N = 100000
-		delta = 1832.6399999999994; z = 2104.128222359781 || Statistics do not contradict the hypothesis H_0
+		delta = 1967.7200000000012; z = 2104.128222359781 || Statistics do not contradict the hypothesis H_0
 
 
 H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1.3)
 	N = 1000
-		delta = 92.36000000000035; z = 30.14352720564616 || An alternative hypothesis should be accepted H_1
+		delta = 64.88000000000011; z = 30.14352720564616 || An alternative hypothesis should be accepted H_1
 	N = 10000
-		delta = 811.6000000000004; z = 232.91182176847582 || An alternative hypothesis should be accepted H_1
+		delta = 766.6399999999994; z = 232.91182176847582 || An alternative hypothesis should be accepted H_1
 	N = 100000
-		delta = 7791.320000000007; z = 2104.128222359781 || An alternative hypothesis should be accepted H_1
+		delta = 7658.0; z = 2104.128222359781 || An alternative hypothesis should be accepted H_1
 
 

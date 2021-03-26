@@ -1,18 +1,18 @@
 H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1)
 	N = 1000
-		D = 0.03538390716980894 || Statistics do not contradict the hypothesis H_0
+		D = 0.02404342139317789 || Statistics do not contradict the hypothesis H_0
 	N = 10000
-		D = 0.0071301494820571465 || Statistics do not contradict the hypothesis H_0
+		D = 0.011750852322926386 || Statistics do not contradict the hypothesis H_0
 	N = 100000
-		D = 0.001638315686791847 || Statistics do not contradict the hypothesis H_0
+		D = 0.0033585482893781493 || Statistics do not contradict the hypothesis H_0
 
 
 H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1.3)
 	N = 1000
-		D = 0.10136657255288706 || An alternative hypothesis should be accepted H_1
+		D = 0.13571140686540806 || An alternative hypothesis should be accepted H_1
 	N = 10000
-		D = 0.10178500734890894 || An alternative hypothesis should be accepted H_1
+		D = 0.09374081515486554 || An alternative hypothesis should be accepted H_1
 	N = 100000
-		D = 0.09812679302966265 || An alternative hypothesis should be accepted H_1
+		D = 0.09808426062451525 || An alternative hypothesis should be accepted H_1
 
 

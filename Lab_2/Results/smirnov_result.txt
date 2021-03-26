@@ -1,0 +1,18 @@
+H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1)
+	N = 1000
+		D = 0.03528819115977444; critical_val = 0.0744902678207026 || Statistics do not contradict the hypothesis H_0
+	N = 10000
+		D = 0.015317739326025703; critical_val = 0.02355589098293673 || Statistics do not contradict the hypothesis H_0
+	N = 100000
+		D = 0.002798448562500888; critical_val = 0.00744902678207026 || Statistics do not contradict the hypothesis H_0
+
+
+H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1.3)
+	N = 1000
+		D = 0.10492461615007731; critical_val = 0.0744902678207026|| An alternative hypothesis should be accepted H_1
+	N = 10000
+		D = 0.10276236611646694; critical_val = 0.02355589098293673|| An alternative hypothesis should be accepted H_1
+	N = 100000
+		D = 0.0960420044788236; critical_val = 0.00744902678207026|| An alternative hypothesis should be accepted H_1
+
+
