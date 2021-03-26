@@ -2,13 +2,13 @@ from scipy import stats
 import numpy as np
 
 
-def expcdf(t, lyambda=1):
-    return 1.0 - np.exp(-lyambda * t)
+def expcdf(t, lyambd=1):
+    return 1.0 - np.exp(-lyambd * t)
 
 
 def kolmogorov(lyambda, size):
-    sample = np.random.exponential(scale=1/lyambda, size=size)
-    sample = np.sort(sample)
+    sample = np.sort(np.random.exponential(scale=1/lyambda, size=size))
+    # sample = np.sort(sample)
 
     k_it = np.array([x for x in range(1, size + 1)])
 
@@ -41,7 +41,6 @@ def chi_square(lyambda, size):
     z_value = stats.chi2.ppf(1 - gamma, r_interval - 1)
 
     v_frequencies_arr = np.array(v_frequencies(sample_exp_cdf, r_interval))  # frequency
-
     delta = (v_frequencies_arr**2/(size/r_interval)).sum() - size
 
     if delta < z_value:
@@ -56,17 +55,14 @@ def chi_square(lyambda, size):
 if __name__ == '__main__':
     z = 1.36  # at gamma = 0.05
     gamma = 0.05
-    n_quantity = [1000, 10000, 100000]
-    lyambda = [1, 1.3]
-    name_list_criterion = ['kolmogorov', 'chi_square']
     dict_for_func = {0: kolmogorov, 1: chi_square}
 
-    for it, name in enumerate(name_list_criterion):
+    for it, name in enumerate(['kolmogorov', 'chi_square']):
         with open("Results\\" + name + "_result.txt", "w") as file:
-            for l in lyambda:
-                print(f"H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, {l})", file=file)
-                for n in n_quantity:
+            for lyambda in [1, 1.3]:
+                print(f"H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, {lyambda})", file=file)
+                for n in [1000, 10000, 100000]:
                     print(f"\tN = {n}", file=file)
-                    dict_for_func[it](l, n)
+                    dict_for_func[it](lyambda, n)
                 print("\n", file=file)
     print("ALL DONE!")
