@@ -42,12 +42,15 @@ def chi_square(lyambda, size):
 
     v_frequencies_arr = np.array(v_frequencies(sample_exp_cdf, r_interval))  # frequency
 
-    delta = (v_frequencies_arr**2/(size*1/r_interval)).sum() - size
+    delta = (v_frequencies_arr**2/(size/r_interval)).sum() - size
 
     if delta < z_value:
         print(f"\t\tdelta = {delta} || Statistics do not contradict the hypothesis H_0", file=file)
     else:
         print(f"\t\tdelta = {delta} || An alternative hypothesis should be accepted H_1", file=file)
+
+
+##############################################################################################################
 
 
 if __name__ == '__main__':
