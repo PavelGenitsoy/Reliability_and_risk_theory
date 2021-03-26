@@ -1,0 +1,18 @@
+H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1)
+	N = 1000
+		delta = 23.720000000000027 || Statistics do not contradict the hypothesis H_0
+	N = 10000
+		delta = 185.79999999999927 || Statistics do not contradict the hypothesis H_0
+	N = 100000
+		delta = 1866.0800000000017 || Statistics do not contradict the hypothesis H_0
+
+
+H_0: X_i belongs to F(u, 1), when real is X_i belongs to F(u, 1.3)
+	N = 1000
+		delta = 69.16000000000008 || An alternative hypothesis should be accepted H_1
+	N = 10000
+		delta = 709.2799999999988 || An alternative hypothesis should be accepted H_1
+	N = 100000
+		delta = 7878.080000000002 || An alternative hypothesis should be accepted H_1
+
+
