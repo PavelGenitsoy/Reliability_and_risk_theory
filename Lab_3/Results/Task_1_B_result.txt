@@ -1,0 +1,9 @@
+Task_1_B:
+	n = 200, m = 600, k = 400
+		delta = 37.76381199995242; z = 62.829620411408165 || Statistics do not contradict the hypothesis H_0
+	n = 2000, m = 6000, k = 4000
+		delta = 315.2953979717948; z = 529.9690345028077 || Statistics do not contradict the hypothesis H_0
+	n = 20000, m = 60000, k = 40000
+		delta = 2955.7019789822034; z = 4960.257496017239 || Statistics do not contradict the hypothesis H_0
+
+
