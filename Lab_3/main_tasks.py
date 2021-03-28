@@ -100,7 +100,7 @@ def task_2_A_chi_square(_, size):
     v_j = v_i_j_arr.sum(axis=0)
     v_i = v_i_j_arr.sum(axis=1)
 
-    tmp = 0
+    tmp = 0.0
     for i in range(r_x_interval - 1):
         for j in range(k_y_interval - 1):
             tmp += (v_i_j_arr[i][j] - v_i[i] * v_j[j] / size) ** 2
@@ -114,7 +114,29 @@ def task_2_A_chi_square(_, size):
     else:
         print(f"\t\tdelta = {delta}; z = {z_value} || An alternative hypothesis should be accepted H_1", file=file)
 
-#################################################################################################################
+#######################################################################################################################
+
+
+def task_2_B_spearman(_, size):
+    sample_x = np.random.uniform(size=size)
+    sorted_x = list(np.sort(sample_x))
+    sample_y = np.random.uniform(low=-1.0, high=1.0, size=size) + sample_x
+    sorted_y = list(np.sort(sample_y))
+
+    z_value = stats.norm.ppf(1 - gamma / 2) / np.sqrt(size)
+
+    positions_r_s = np.array([[sorted_x.index(elem) for elem in sample_x], [sorted_y.index(elem) for elem in sample_y]])
+
+    p_value = 1 - (6 / (size * (size**2 - 1)) * np.sum((positions_r_s[0] - positions_r_s[1]) ** 2))
+
+    print(f"\tn = {size}", file=file)
+    if np.abs(p_value) < z_value:
+        print(f"\t\tp_value = {p_value}; z = {z_value} || Statistics do not contradict the hypothesis H_0", file=file)
+    else:
+        print(f"\t\tp_value = {p_value}; z = {z_value} || An alternative hypothesis should be accepted H_1", file=file)
+
+
+#######################################################################################################################
 
 
 if __name__ == '__main__':
@@ -122,14 +144,14 @@ if __name__ == '__main__':
     lyambda = [1, 1.1]
     value_param = {0: [[500, 1000], [5000, 10000], [50000, 100000]],  # n, m
                    1: [[200, 600, 400], [2000, 6000, 4000], [20000, 60000, 40000]],  # n, m, k
-                   2: [500, 5000, 50000]}
-    dict_for_func = {0: task_1_A_empty_boxes, 1: task_1_B_chi_square, 2: task_2_A_chi_square}
-    test = ['Task_1_A', 'Task_1_B', 'Task_2_A']
+                   2: [500, 5000, 50000]}  # n
+    dict_for_func = {0: task_1_A_empty_boxes, 1: task_1_B_chi_square, 2: task_2_A_chi_square, 3: task_2_B_spearman}
+    test = ['Task_1_A', 'Task_1_B', 'Task_2_A', 'Task_2_B']
 
     for it, name in enumerate(test):
         with open("Results\\" + name + "_result.txt", "w") as file:
             print(f"{name}:", file=file)
-            for size in value_param[it]:
+            for size in value_param[2 if it > 1 else it]:
                 dict_for_func[it](lyambda[1], size)
             print("\n", file=file)
     print("ALL DONE!")

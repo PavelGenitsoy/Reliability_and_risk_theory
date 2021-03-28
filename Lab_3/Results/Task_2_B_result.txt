@@ -1,0 +1,9 @@
+Task_2_B:
+	n = 500
+		p_value = 0.41771859887439555; z = 0.08765225405765815 || An alternative hypothesis should be accepted H_1
+	n = 5000
+		p_value = 1.0454729378509175; z = 0.027718076486993554 || An alternative hypothesis should be accepted H_1
+	n = 50000
+		p_value = 0.9999406656696402; z = 0.008765225405765815 || An alternative hypothesis should be accepted H_1
+
+
