@@ -1,5 +1,6 @@
 from scipy import stats
 import numpy as np
+from operator import itemgetter
 
 
 def count_empty_blocks(x, y):
@@ -125,15 +126,48 @@ def task_2_B_spearman(_, size):
 
     z_value = stats.norm.ppf(1 - gamma / 2) / np.sqrt(size)
 
-    positions_r_s = np.array([[sorted_x.index(elem) for elem in sample_x], [sorted_y.index(elem) for elem in sample_y]])
+    list_of_tuples = list(zip([sorted_x.index(elem) for elem in sample_x], [sorted_y.index(elem) for elem in sample_y]))
+    r_index, s_index = zip(*sorted(list_of_tuples, key=itemgetter(0)))
 
-    p_value = 1 - (6 / (size * (size**2 - 1)) * np.sum((positions_r_s[0] - positions_r_s[1]) ** 2))
+    p_value = 1 - (6 / (size * (size**2 - 1)) * np.sum((np.array(r_index) - np.array(s_index)) ** 2))
 
     print(f"\tn = {size}", file=file)
     if np.abs(p_value) < z_value:
-        print(f"\t\tp_value = {p_value}; z = {z_value} || Statistics do not contradict the hypothesis H_0", file=file)
+        print(f"\t\tp_value = {np.abs(p_value)}; z = {z_value} || Statistics do not contradict the hypothesis H_0",
+              file=file)
     else:
-        print(f"\t\tp_value = {p_value}; z = {z_value} || An alternative hypothesis should be accepted H_1", file=file)
+        print(f"\t\tp_value = {np.abs(p_value)}; z = {z_value} || An alternative hypothesis should be accepted H_1",
+              file=file)
+
+
+#######################################################################################################################
+
+
+def task_2_C_kendell(_, size):
+    sample_x = np.random.uniform(size=size)
+    sorted_x = list(np.sort(sample_x))
+    sample_y = np.random.uniform(low=-1.0, high=1.0, size=size) + sample_x
+    sorted_y = list(np.sort(sample_y))
+
+    z_value = 2 * stats.norm.ppf(1 - gamma / 2) / (3 * np.sqrt(size))
+
+    list_of_tuples = list(zip([sorted_x.index(elem) for elem in sample_x], [sorted_y.index(elem) for elem in sample_y]))
+    r_index, v_array = zip(*sorted(list_of_tuples, key=itemgetter(0)))
+    v_array = np.array(v_array)
+
+    count_of_all_pairs = []
+    for i in range(size):
+        count_of_all_pairs.append(len(v_array[i + 1:][v_array[i] < v_array[i + 1:]]))
+
+    tau_value = (4 * int(np.sum(count_of_all_pairs))) / (size * (size - 1)) - 1
+
+    print(f"\tn = {size}", file=file)
+    if np.abs(tau_value) < z_value:
+        print(f"\t\ttau_value = {np.abs(tau_value)}; z = {z_value} || Statistics do not contradict the hypothesis H_0",
+              file=file)
+    else:
+        print(f"\t\ttau_value = {np.abs(tau_value)}; z = {z_value} || An alternative hypothesis should be accepted H_1",
+              file=file)
 
 
 #######################################################################################################################
@@ -145,8 +179,9 @@ if __name__ == '__main__':
     value_param = {0: [[500, 1000], [5000, 10000], [50000, 100000]],  # n, m
                    1: [[200, 600, 400], [2000, 6000, 4000], [20000, 60000, 40000]],  # n, m, k
                    2: [500, 5000, 50000]}  # n
-    dict_for_func = {0: task_1_A_empty_boxes, 1: task_1_B_chi_square, 2: task_2_A_chi_square, 3: task_2_B_spearman}
-    test = ['Task_1_A', 'Task_1_B', 'Task_2_A', 'Task_2_B']
+    dict_for_func = {0: task_1_A_empty_boxes, 1: task_1_B_chi_square, 2: task_2_A_chi_square, 3: task_2_B_spearman,
+                     4: task_2_C_kendell}
+    test = ['Task_1_A', 'Task_1_B', 'Task_2_A', 'Task_2_B', 'Task_2_C']
 
     for it, name in enumerate(test):
         with open("Results\\" + name + "_result.txt", "w") as file:
