@@ -1,9 +1,9 @@
 Task_1_B:
 	n = 200, m = 600, k = 400
-		delta = 0.9983321787399109; z = 62.829620411408165 || Statistics do not contradict the hypothesis H_0
+		delta = 0.16639178482395542; z = 62.829620411408165 || Statistics do not contradict the hypothesis H_0
 	n = 2000, m = 6000, k = 4000
-		delta = 1.333444474544751; z = 529.9690345028077 || Statistics do not contradict the hypothesis H_0
+		delta = 0.3333611342716112; z = 529.9690345028077 || Statistics do not contradict the hypothesis H_0
 	n = 20000, m = 60000, k = 40000
-		delta = 0.33333611196766744; z = 4960.257496017239 || Statistics do not contradict the hypothesis H_0
+		delta = 0.3334027767939863; z = 4960.257496017239 || Statistics do not contradict the hypothesis H_0
 
 

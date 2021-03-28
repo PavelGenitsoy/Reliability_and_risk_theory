@@ -41,7 +41,7 @@ def task_1_B_chi_square(lyambda, size):
     sample_exp_z = np.random.exponential(scale=1 / lyambda, size=size[2])
     samples = [sample_exp_x, sample_exp_y, sample_exp_z]
 
-    r_interval = int(20 * np.array(size).sum() / 1000)
+    r_interval = int(20 * np.array(size).sum(dtype=np.int64) / 1000)
     u_interval = np.linspace(0, np.maximum(np.maximum(np.max(samples[0]), np.max(samples[1])), np.max(samples[2])),
                              r_interval)
 
@@ -49,9 +49,9 @@ def task_1_B_chi_square(lyambda, size):
 
     v_j_frequencies_arr = np.array(v_frequencies(samples, u_interval))
 
-    v_j = v_j_frequencies_arr.sum(axis=0)
-    n_i = v_j_frequencies_arr.sum(axis=1)  # n_array (for every sample)
-    n_val = n_i.sum()
+    v_j = v_j_frequencies_arr.sum(axis=0, dtype=np.int64)
+    n_i = v_j_frequencies_arr.sum(axis=1, dtype=np.int64)  # n_array (for every sample)
+    n_val = n_i.sum(dtype=np.int64)
 
     tmp = 0
     for i in range(len(samples)):
@@ -98,8 +98,8 @@ def task_2_A_chi_square(_, size):
 
     v_i_j_arr = v_arr_from_intervals(u_x_interval, sample_x, v_y_interval, sample_y)
 
-    v_j = v_i_j_arr.sum(axis=0)
-    v_i = v_i_j_arr.sum(axis=1)
+    v_j = v_i_j_arr.sum(axis=0, dtype=np.int64)
+    v_i = v_i_j_arr.sum(axis=1, dtype=np.int64)
 
     tmp = 0.0
     for i in range(r_x_interval - 1):
@@ -129,7 +129,7 @@ def task_2_B_spearman(_, size):
     list_of_tuples = list(zip([sorted_x.index(elem) for elem in sample_x], [sorted_y.index(elem) for elem in sample_y]))
     r_index, s_index = zip(*sorted(list_of_tuples, key=itemgetter(0)))
 
-    p_value = 1 - (6 / (size * (size**2 - 1)) * np.sum((np.array(r_index) - np.array(s_index)) ** 2))
+    p_value = 1 - (6 / (size * (size**2 - 1)) * np.sum((np.array(r_index) - np.array(s_index)) ** 2, dtype=np.int64))
 
     print(f"\tn = {size}", file=file)
     if np.abs(p_value) < z_value:
@@ -159,7 +159,7 @@ def task_2_C_kendell(_, size):
     for i in range(size):
         count_of_all_pairs.append(len(v_array[i + 1:][v_array[i] < v_array[i + 1:]]))
 
-    tau_value = (4 * int(np.sum(count_of_all_pairs))) / (size * (size - 1)) - 1
+    tau_value = (4 * np.sum(count_of_all_pairs, dtype=np.int64)) / (size * (size - 1)) - 1
 
     print(f"\tn = {size}", file=file)
     if np.abs(tau_value) < z_value:
