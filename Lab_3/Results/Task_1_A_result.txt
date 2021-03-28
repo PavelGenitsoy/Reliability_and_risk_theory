@@ -1,9 +1,9 @@
 Task_1_A:
 	n = 500, m = 1000
-		count_zero_blocks = 166; critical_limit = 180.8233126758487 || Statistics do not contradict the hypothesis H_0
+		count_zero_blocks = 163; critical_limit = 180.8233126758487 || Statistics do not contradict the hypothesis H_0
 	n = 5000, m = 10000
-		count_zero_blocks = 1663; critical_limit = 1711.433912084415 || Statistics do not contradict the hypothesis H_0
+		count_zero_blocks = 1650; critical_limit = 1711.433912084415 || Statistics do not contradict the hypothesis H_0
 	n = 50000, m = 100000
-		count_zero_blocks = 16721; critical_limit = 16808.23312675849 || Statistics do not contradict the hypothesis H_0
+		count_zero_blocks = 16754; critical_limit = 16808.23312675849 || Statistics do not contradict the hypothesis H_0
 
 

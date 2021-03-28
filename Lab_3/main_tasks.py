@@ -12,7 +12,7 @@ def task_1_A_empty_boxes(lyambda, size):
 
     r_val = int(size[1] / size[0])
     count_zero_boxes = count_empty_blocks(sample_exp_x, sample_exp_y)
-    limit = size[0] / (1 + r_val) + np.sqrt(size[0]) * (r_val / np.power(1 + r_val, 3/2)) * stats.norm.ppf(1 - gamma)
+    limit = size[0] / (1 + r_val) + np.sqrt(size[0]) * (r_val / np.power(1 + r_val, 3 / 2)) * stats.norm.ppf(1 - gamma)
 
     print(f"\tn = {size[0]}, m = {size[1]}", file=file)
     if count_zero_boxes < limit:
@@ -31,7 +31,7 @@ def v_frequencies(samples, u):
     for it, list_val in enumerate(samples):
         for i in range(len(u) - 1):
             v_arr[it][i] = len(list_val[(list_val >= u[i]) & (list_val < u[i + 1])])
-    return v_arr
+    return v_arr.astype(int)
 
 
 def task_1_B_chi_square(lyambda, size):
@@ -54,8 +54,10 @@ def task_1_B_chi_square(lyambda, size):
 
     tmp = 0
     for i in range(len(samples)):
-        for j in range(r_interval - 1):
-            tmp += (v_j_frequencies_arr[i][j] - n_i[i] * v_j[j] / n_val)**2 / (n_i[i] * v_j[j] + 1e-10)
+        for j in range(r_interval):
+            if v_j[j] != 0.0:
+                tmp += (v_j_frequencies_arr[i][j] - n_i[i] * v_j[j] / n_val) ** 2
+                tmp /= (n_i[i] * v_j[j])
     delta = n_val * tmp
 
     print(f"\tn = {size[0]}, m = {size[1]}, k = {size[2]}", file=file)
@@ -68,13 +70,61 @@ def task_1_B_chi_square(lyambda, size):
 #######################################################################################################################
 
 
+def v_arr_from_intervals(u_x_interval, x_sample, v_y_interval, y_sample):
+    v_arr = np.zeros((len(u_x_interval) - 1, len(v_y_interval) - 1))
+    for i in range(len(u_x_interval) - 1):
+        for j in range(len(v_y_interval) - 1):
+            v_arr[i][j] = len(x_sample[(x_sample >= u_x_interval[i]) & (x_sample < u_x_interval[i + 1])]) + \
+                          len(y_sample[(y_sample >= v_y_interval[j]) & (y_sample < v_y_interval[j + 1])])
+    return v_arr.astype(int)
+
+
+def task_2_A_chi_square(_, size):
+    sample_x = np.random.uniform(size=size)
+    sample_y = np.random.uniform(low=-1.0, high=1.0, size=size) + sample_x
+
+    if size == 50000:
+        r_x_interval = 100
+        k_y_interval = 105
+    else:
+        r_x_interval = int(10 * size / 1000)
+        k_y_interval = int(11 * size / 1000)
+
+    u_x_interval = np.linspace(0, np.max(sample_x), r_x_interval)
+    v_y_interval = np.linspace(-1, np.max(sample_y), k_y_interval)
+
+    z_value = stats.chi2.ppf(1 - gamma, (r_x_interval - 1) * (k_y_interval - 1))
+
+    v_i_j_arr = v_arr_from_intervals(u_x_interval, sample_x, v_y_interval, sample_y)
+
+    v_j = v_i_j_arr.sum(axis=0)
+    v_i = v_i_j_arr.sum(axis=1)
+
+    tmp = 0
+    for i in range(r_x_interval - 1):
+        for j in range(k_y_interval - 1):
+            tmp += (v_i_j_arr[i][j] - v_i[i] * v_j[j] / size) ** 2
+            tmp /= (v_i[i] * v_j[j])
+
+    delta = size * np.abs(tmp)
+
+    print(f"\tn = {size}, r = {r_x_interval}, k = {k_y_interval}", file=file)
+    if delta < z_value:
+        print(f"\t\tdelta = {delta}; z = {z_value} || Statistics do not contradict the hypothesis H_0", file=file)
+    else:
+        print(f"\t\tdelta = {delta}; z = {z_value} || An alternative hypothesis should be accepted H_1", file=file)
+
+#################################################################################################################
+
+
 if __name__ == '__main__':
     gamma = 0.05
     lyambda = [1, 1.1]
     value_param = {0: [[500, 1000], [5000, 10000], [50000, 100000]],  # n, m
-                   1: [[200, 600, 400], [2000, 6000, 4000], [20000, 60000, 40000]]}  # n, m, k
-    dict_for_func = {0: task_1_A_empty_boxes, 1: task_1_B_chi_square}
-    test = ['Task_1_A', 'Task_1_B']
+                   1: [[200, 600, 400], [2000, 6000, 4000], [20000, 60000, 40000]],  # n, m, k
+                   2: [500, 5000, 50000]}
+    dict_for_func = {0: task_1_A_empty_boxes, 1: task_1_B_chi_square, 2: task_2_A_chi_square}
+    test = ['Task_1_A', 'Task_1_B', 'Task_2_A']
 
     for it, name in enumerate(test):
         with open("Results\\" + name + "_result.txt", "w") as file:
