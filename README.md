@@ -13,6 +13,6 @@ The assignments were taken from here:
       <b>task:</b> http://prntscr.com/10vjw0u
       
   ⬤ Lab3: 
-      <b>tasks:</b> 1) https://prnt.sc/10z17pp
+      <b>tasks:</b>        1) https://prnt.sc/10z17pp 
                     2) http://prntscr.com/10z19mq
                     3) http://prntscr.com/10z1ad2</pre>
