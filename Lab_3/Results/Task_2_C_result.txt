@@ -1,9 +1,9 @@
 Task_2_C:
 	n = 500
-		tau_value = 0.23512625250500996; z = 0.05843483603843876 || An alternative hypothesis should be accepted H_1
+		tau_value = 0.31049298597194386; z = 0.05843483603843876 || An alternative hypothesis should be accepted H_1
 	n = 5000
-		tau_value = 0.298871774354871; z = 0.018478717657995705 || An alternative hypothesis should be accepted H_1
+		tau_value = 0.3061409081816364; z = 0.018478717657995705 || An alternative hypothesis should be accepted H_1
 	n = 50000
-		tau_value = 0.2955835228704573; z = 0.005843483603843878 || An alternative hypothesis should be accepted H_1
+		tau_value = 0.28995503110062204; z = 0.005843483603843878 || An alternative hypothesis should be accepted H_1
 
 

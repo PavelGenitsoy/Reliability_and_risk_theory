@@ -1,9 +1,9 @@
 Task_2_A:
 	n = 500, r = 5, k = 5
-		delta = 1349.6118794860827; z = 26.29622760486423 || An alternative hypothesis should be accepted H_1
+		delta = 125.17476417107318; z = 26.29622760486423 || An alternative hypothesis should be accepted H_1
 	n = 5000, r = 50, k = 55
-		delta = 10742.223944498848; z = 2766.7829362344587 || An alternative hypothesis should be accepted H_1
+		delta = 4708.891248642113; z = 2766.7829362344587 || An alternative hypothesis should be accepted H_1
 	n = 50000, r = 100, k = 105
-		delta = 108091.48649699012; z = 10533.166610314229 || An alternative hypothesis should be accepted H_1
+		delta = 34221.16993401818; z = 10533.166610314229 || An alternative hypothesis should be accepted H_1
 
 
