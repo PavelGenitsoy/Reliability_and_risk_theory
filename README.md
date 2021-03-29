@@ -10,4 +10,9 @@ The assignments were taken from here:
       for <b>task_1</b> I took information from this <b>link</b>: https://aegis4048.github.io/comprehensive_confidence_intervals_for_python_developers#python_ci_mean
       
   ⬤ Lab2: 
-      <b>task:</b> http://prntscr.com/10vjw0u</pre>
+      <b>task:</b> http://prntscr.com/10vjw0u
+      
+  ⬤ Lab3: 
+      <b>tasks:</b> 1) https://prnt.sc/10z17pp
+                    2) http://prntscr.com/10z19mq
+                    3) http://prntscr.com/10z1ad2</pre>
