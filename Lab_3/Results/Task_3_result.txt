@@ -1,9 +1,9 @@
 Task_3:
-	n = 500; k = 30559
-		limit = 17.074257305311995; z = 1.959963984540054 || An alternative hypothesis should be accepted H_1
-	n = 5000; k = 9241832
-		limit = 50.794285892337456; z = 1.959963984540054 || An alternative hypothesis should be accepted H_1
-	n = 50000; k = 834709891
-		limit = 112.54884544314963; z = 1.959963984540054 || An alternative hypothesis should be accepted H_1
+	n = 500; k = 90295
+		limit = 14.983444303630591; z = 1.959963984540054 || An alternative hypothesis should be accepted H_1
+	n = 5000; k = 9423336
+		limit = 53.87451091343705; z = 1.959963984540054 || An alternative hypothesis should be accepted H_1
+	n = 50000; k = 893997806
+		limit = 144.36607940736468; z = 1.959963984540054 || An alternative hypothesis should be accepted H_1
 
 

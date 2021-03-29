@@ -31,7 +31,7 @@ def v_frequencies(samples, u):
     v_arr = np.zeros((len(samples), len(u)))
     for it, list_val in enumerate(samples):
         for i in range(len(u) - 1):
-            v_arr[it][i] = int(len(list_val[(list_val >= u[i]) & (list_val < u[i + 1])]))
+            v_arr[it][i] = int(len(list_val[(list_val > u[i]) & (list_val <= u[i + 1])]))
     return v_arr
 
 
@@ -55,10 +55,8 @@ def task_1_B_chi_square(lyambda, size):
 
     tmp = 0
     for i in range(len(samples)):
-        for j in range(r_interval):
-            if v_j[j] != 0.0:
-                tmp += (v_j_frequencies_arr[i][j] - n_i[i] * v_j[j] / n_val) ** 2
-                tmp /= (n_i[i] * v_j[j])
+        for j in range(r_interval - 1):
+            tmp += (v_j_frequencies_arr[i][j] - n_i[i] * v_j[j] / n_val) ** 2 / (n_i[i] * v_j[j] + 1e-8)
     delta = n_val * tmp
 
     print(f"\tn = {size[0]}, m = {size[1]}, k = {size[2]}", file=file)
@@ -105,7 +103,7 @@ def task_2_A_chi_square(_, size):
     tmp = 0
     for i in range(r_x_interval):
         for j in range(k_y_interval):
-            tmp += (v_i_j_arr[i][j] - v_i[i] * v_j[j] / size) ** 2 / (v_i[i] * v_j[j])
+            tmp += (v_i_j_arr[i][j] - v_i[i] * v_j[j] / size) ** 2 / (v_i[i] * v_j[j] + 1e-8)
 
     delta = size * tmp
 
